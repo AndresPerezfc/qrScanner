@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:barcode_scan/barcode_scan.dart';
+
 import 'package:qrscannerapp/src/pages/direcciones_page.dart';
 import 'package:qrscannerapp/src/pages/mapas_page.dart';
 
@@ -27,10 +30,29 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
-        onPressed: () {},
+        onPressed: _scanQR,
         backgroundColor: Colors.redAccent,
       ),
     );
+  }
+
+  _scanQR() async {
+    //geo:40.67634085948375,-73.89607801875003
+    //andresperez.com
+
+    dynamic futureString = '';
+
+    try {
+      futureString = await BarcodeScanner.scan();
+    } catch (e) {
+      futureString = e.toString();
+    }
+
+    print('Future String: ${futureString.rawContent}');
+
+    if (futureString != null) {
+      print('tene,ps información');
+    }
   }
 
   Widget _cargarPagina(int paginaActual) {
