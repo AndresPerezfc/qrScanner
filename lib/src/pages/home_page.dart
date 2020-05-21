@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
 
     dynamic futureString = '';
 
-    try {
+    /*try {
       futureString = await BarcodeScanner.scan();
     } catch (e) {
       futureString = e.toString();
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
 
     if (futureString != null) {
       print('tene,ps información');
-    }
+    } */
   }
 
   Widget _cargarPagina(int paginaActual) {
